@@ -13,6 +13,13 @@
   }
 }
 
+.container-fluid{
+  background-color: rgb(204, 201, 201);
+  padding: 0.7rem;
+  margin-top: -0.5rem;
+  
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
