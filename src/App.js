@@ -4,7 +4,10 @@ import {Header} from "./MyComponents/Header";
 import Todos from "./MyComponents/Todos";
 import AddTodo from "./MyComponents/AddTodo";
 import Footer from "./MyComponents/Footer"; 
+import About from "./MyComponents/About";
 import React, { useState, useEffect, useEffectEvent } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 
 function App() {
   let initTodo;
@@ -19,14 +22,14 @@ function App() {
 
     setTodos(todos.filter((e)=>{
       return e!==todo;
-    }))
+    })) 
     localStorage.setItem("todos", JSON.stringify(todos));
    }
 
    const addTodo = (title,desc)=>{
       console.log("I am adding thid todo", title, desc);
       let sno;
-      if (todos.length==0){
+      if (todos.length===0){
         sno = 1;
       }else{
           sno = todos[todos.length-1].sno + 1;
@@ -48,10 +51,24 @@ function App() {
 
   return (
     <>
+    <Router>
       <Header />
-      <AddTodo addTodo={addTodo}/>
-      <Todos Todos={todos} onDelete={onDelete}/>
+        <Switch>
+          <Route exact path="/" render={()=>{
+            return(
+                <>
+                <AddTodo addTodo={addTodo}/>
+                <Todos Todos={todos} onDelete={onDelete}/>
+                </>)
+          }}>
+          </Route>
+          <Route exact path="/about">
+            <About />
+          </Route>
+        </Switch>
+    
       <Footer />
+    </Router>
     </>
   );
 }

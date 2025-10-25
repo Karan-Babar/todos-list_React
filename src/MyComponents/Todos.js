@@ -7,7 +7,7 @@ const Todos  = (props) => {
             <h3 className="my-2">Todos List</h3>
             {props.Todos.length===0? "No Todos to display":
             props.Todos.map((todo)=>{
-            return <Todo todo={todo} key={todo.sno} onDelete={props.onDelete}/>
+            return (<Todo todo={todo} key={todo.sno} onDelete={props.onDelete}/>)
             })
              }
         </div>
