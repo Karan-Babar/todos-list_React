@@ -9,8 +9,11 @@ const AddTodo = (props) => {
           e.preventDefault();
           if(!title || !desc){
             alert("Title and Description cannot be blank");
-          }
+          }else{
           props.addTodo(title,desc);
+          setTitle("");
+          setDesc("");
+          }
      }
   return (
     <div className='container my-3'>
